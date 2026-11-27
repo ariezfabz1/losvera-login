@@ -30,12 +30,14 @@ document.addEventListener("DOMContentLoaded", function () {
         ? Number(volumeSlider.value) / 100
         : 0.7;
 
+    // Play / Pause Icon
     function updatePlayIcon(isPlaying) {
         playButton.innerHTML = isPlaying
             ? '<path d="M8 5H11V19H8V5Z" fill="currentColor"></path><path d="M13 5H16V19H13V5Z" fill="currentColor"></path>'
             : '<path d="M8 5V19L19 12L8 5Z" fill="currentColor"></path>';
     }
 
+    // Format Time
     function formatTime(seconds) {
         if (!Number.isFinite(seconds)) return "00:00";
 
@@ -46,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
             String(remainingSeconds).padStart(2, "0");
     }
 
+    // Load Track
     function loadTrack(index) {
         const track = playlist[index];
 
@@ -65,17 +68,19 @@ document.addEventListener("DOMContentLoaded", function () {
         updatePlayIcon(false);
     }
 
+    // Play Music
     function playMusic() {
         audio.play().catch(error => {
-            console.error("Music playback failed:", error);
+            console.log("Music playback blocked:", error);
         });
     }
 
+    // Pause Music
     function pauseMusic() {
         audio.pause();
     }
 
-    // Play / Pause
+    // Play / Pause Button
     playButton.addEventListener("click", function () {
         if (audio.paused) {
             playMusic();
@@ -121,10 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const rect = progressBar.getBoundingClientRect();
             const position = (event.clientX - rect.left) / rect.width;
 
-            audio.currentTime = Math.max(
-                0,
-                Math.min(1, position)
-            ) * audio.duration;
+            audio.currentTime = Math.max(0, Math.min(1, position)) * audio.duration;
         });
     }
 
@@ -155,9 +157,24 @@ document.addEventListener("DOMContentLoaded", function () {
         changeTrack(1);
     });
 
-    // Load first track
+    // First User Interaction Fallback
+    function startMusicOnInteraction() {
+        if (audio.paused) {
+            playMusic();
+        }
+
+        document.removeEventListener("click", startMusicOnInteraction);
+        document.removeEventListener("keydown", startMusicOnInteraction);
+        document.removeEventListener("touchstart", startMusicOnInteraction);
+    }
+
+    document.addEventListener("click", startMusicOnInteraction);
+    document.addEventListener("keydown", startMusicOnInteraction);
+    document.addEventListener("touchstart", startMusicOnInteraction);
+
+    // Load First Track
     loadTrack(currentTrack);
 
-    // Attempt autoplay
+    // Attempt Autoplay
     playMusic();
 });
