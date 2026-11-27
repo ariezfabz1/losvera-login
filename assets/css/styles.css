@@ -1,0 +1,462 @@
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: transparent !important;
+    overflow: hidden;
+}
+
+.login-container {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    z-index: 1;
+}
+
+.login-panel {
+    width: 500px;
+    min-height: 350px;
+    padding: 35px;
+    background: rgba(15, 16, 18, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    color: #ffffff;
+    box-sizing: border-box;
+}
+
+.login-title {
+    font-size: 26px;
+    font-weight: 700;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.login-input {
+    display: block;
+    width: 100%;
+    height: 45px;
+    padding: 0 15px;
+    margin-top: 15px;
+    background: #1c1e22;
+    border: 1px solid #30343a;
+    border-radius: 6px;
+    color: #ffffff;
+    outline: none;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.login-input:focus {
+    border-color: #ff8c00;
+    box-shadow: 0 0 0 2px rgba(255, 140, 0, 0.12);
+}
+
+.login-input::placeholder {
+    color: #858585;
+}
+
+.login-button {
+    display: block;
+    width: 100%;
+    height: 45px;
+    margin-top: 20px;
+    background: #ff8c00;
+    border: none;
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.login-button:hover {
+    background: #e67e00;
+}
+
+.login-button:active {
+    transform: scale(0.98);
+}
+
+.login-logo {
+    display: block;
+    width: 120px;
+    height: 100px;
+    object-fit: contain;
+    margin: 0 auto 15px;
+    filter: drop-shadow(0 4px 12px rgba(255, 140, 0, 0.45));
+}
+
+.discord-section {
+    width: 100%;
+    margin-top: 25px;
+    text-align: center;
+}
+
+.discord-logo {
+    display: block;
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+    margin: 0 auto 10px;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.9));
+}
+
+.discord-heading {
+    margin: 0 0 1px;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
+}
+
+.discord-link {
+    display: block;
+    color: #ff8c00;
+    font-size: 10px;
+    text-decoration: none;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
+    transition: color 0.2s ease;
+}
+
+.discord-link:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.input-group .login-input {
+    margin-top: 0;
+    padding-left: 40px;
+}
+
+.input-group svg {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    color: #858585;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Music Player */
+
+.music-player {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    width: 340px;
+    padding: 12px 15px;
+    background: rgba(15, 16, 18, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    color: #ffffff;
+    box-sizing: border-box;
+    z-index: 100;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    column-gap: 12px;
+    row-gap: 10px;
+}
+
+.music-header {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-bottom: 12px;
+    grid-column: 1;
+}
+
+.music-title {
+    margin: 0;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.music-artist {
+    margin: 0;
+    color: #858585;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+.music-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.music-controls svg.play {
+    width: 19px;
+    height: 19px;
+    color: #ffffff;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.music-controls svg {
+    width: 17px;
+    height: 17px;
+    color: #aaaaaa;
+    cursor: pointer;
+    flex-shrink: 0;
+    transform: scale(1.12);
+}
+
+.music-progress {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.music-progress .progress-bar {
+    flex: 0 0 100%;
+    order: 0;
+    width: 100%;
+    height: 3px;
+    background: #393c42;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 4px;
+    cursor: pointer;
+}
+
+.music-progress p {
+    order: 1;
+    margin: 0;
+    font-size: 9px;
+    color: #858585;
+    line-height: 1.4;
+}
+
+.music-progress .progress-fill {
+    width: 0%;
+    height: 100%;
+    background: #ff9000;
+    border-radius: 10px;
+    transition: width 0.2s ease;
+}
+
+.volume-slider {
+    width: 65px;
+    height: 4px;
+    accent-color: #ff9000;
+    cursor: pointer;
+    margin: 0;
+}
+
+#music-audio {
+    display: none;
+}
+
+/* Background Capture */
+
+#game-background {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    filter: blur(8px);
+    transform: scale(1.03);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Mobile */
+
+@media screen and (max-width: 600px) {
+    .music-player {
+        right: 12px;
+        bottom: 12px;
+        width: min(340px, calc(100vw - 24px));
+        padding: 10px 12px;
+    }
+
+    .music-controls {
+        gap: 8px;
+    }
+
+    .volume-slider {
+        width: 45px;
+    }
+
+    .login-panel {
+        width: min(500px, calc(100vw - 32px));
+        min-height: auto;
+        padding: 25px;
+    }
+
+    .login-title {
+        font-size: 22px;
+    }
+
+    .login-logo {
+        width: 100px;
+        height: 85px;
+    }
+
+    .discord-section {
+        margin-top: 18px;
+    }
+}
+
+/* Android Landscape */
+
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    html, body {
+        overflow: hidden;
+    }
+
+    .login-container {
+        justify-content: flex-start;
+        padding: 12px 0;
+        box-sizing: border-box;
+    }
+
+    .login-panel {
+        width: min(420px, calc(100vw - 32px));
+        min-height: auto;
+        padding: 18px 24px;
+    }
+
+    .login-logo {
+        width: 75px;
+        height: 60px;
+        margin-bottom: 8px;
+    }
+
+    .login-title {
+        font-size: 20px;
+        margin-bottom: 6px;
+    }
+
+    .login-input {
+        height: 38px;
+        margin-top: 8px;
+    }
+
+    .input-group {
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+
+    .login-button {
+        height: 38px;
+        margin-top: 10px;
+    }
+
+    .discord-section {
+        margin-top: 12px;
+    }
+
+    .discord-logo {
+        width: 28px;
+        height: 28px;
+        margin-bottom: 5px;
+    }
+
+    .music-player {
+        right: 12px;
+        bottom: 12px;
+        width: min(300px, calc(50vw - 24px));
+        padding: 9px 12px;
+        column-gap: 8px;
+        row-gap: 6px;
+    }
+
+    .music-header {
+        margin-bottom: 5px;
+    }
+
+    .music-title {
+        font-size: 11px;
+    }
+
+    .music-artist {
+        font-size: 9px;
+    }
+
+    .music-controls {
+        gap: 7px;
+    }
+
+    .music-controls svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    .music-controls svg.play {
+        width: 16px;
+        height: 16px;
+    }
+
+    .volume-slider {
+        width: 40px;
+    }
+
+    .music-progress {
+        margin-top: 3px;
+    }
+}
+
+/* PC - Small Screen */
+
+@media screen and (min-width: 601px) and (max-height: 700px) {
+    .login-panel {
+        padding: 25px;
+    }
+
+    .login-logo {
+        width: 100px;
+        height: 80px;
+        margin-bottom: 10px;
+    }
+
+    .login-title {
+        font-size: 23px;
+    }
+
+    .discord-section {
+        margin-top: 15px;
+    }
+}
+
+/* PC - Large Screen */
+
+@media screen and (min-width: 1600px) {
+    .music-player {
+        right: 30px;
+        bottom: 30px;
+    }
+}
